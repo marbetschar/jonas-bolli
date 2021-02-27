@@ -1,0 +1,72 @@
+.has-background-transparent {
+    background-color: transparent !important;
+}
+
+.has-background-blur-white {
+    background:rgba(255,255,255,0.8);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.has-text-weight-bold {
+    font-weight: bold;
+}
+
+.is-fullwidth {
+    min-width: 100vw;
+}
+
+.is-absolute-fullsize {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.is-absolute-fullsize > * {
+    position: absolute;
+    min-height: 100vh;
+    width: inherit;
+    height: inherit;
+    max-width: inherit;
+    max-height: inherit;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+
+    /* animation */
+    transition-duration: 750ms;
+    opacity: 1;
+}
+
+.is-absolute-fullsize > *.is-not-visible {
+    opacity: 0;
+}
+
+.is-flex-direction-row {
+    flex-direction: row;
+}
+.is-justify-content-space-around {
+    justify-content: space-around;
+}
+
+.is-align-items-center {
+    align-items: center;
+}
+
+.buttons.has-background-transparent .button {
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    border: 0;
+    color: lightgray;
+}
+
+.buttons.has-background-transparent .button.is-active {
+    color: white;
+    text-decoration: underline;
+}
