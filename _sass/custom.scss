@@ -2,10 +2,24 @@
     background-color: transparent !important;
 }
 
-.has-background-blur-white {
-    background:rgba(255,255,255,0.8);
+.has-background-blur-light {
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
+}
+
+.navbar.is-transparent.has-background-blur-light .button {
+    border: 0;
+    color: white;
+    background-color: transparent;
+}
+.navbar.is-transparent.has-background-blur-light .button.is-active {
+    border-radius: 0;
+    border-bottom: 1px solid white;
+    box-shadow: none !important;
+}
+
+#navbar-main .buttons.are-large {
+    flex-direction: column;
 }
 
 .has-text-weight-bold {
@@ -14,6 +28,14 @@
 
 .is-fullwidth {
     min-width: 100vw;
+}
+
+.navbar-menu.is-transparent {
+    background-color: transparent !important;
+}
+
+.navbar .navbar-burger {
+    align-self: center;
 }
 
 .is-absolute-fullsize {
@@ -69,4 +91,37 @@
 .buttons.has-background-transparent .button.is-active {
     color: white;
     text-decoration: underline;
+}
+
+.button.is-text {
+    background-color: transparent !important;
+    text-decoration: none;
+    border: 0;
+}
+
+.field.is-dark .label {
+    color: lightgray;
+}
+
+.field.is-dark .control > *,
+.field.is-dark .control > *:hover {
+    border: 1px solid $lightdark;
+    color: white;
+    background-color: $lightdark;
+}
+
+.field {
+    padding-bottom: 1em;
+}
+
+@media screen and (max-width: 767px) {
+    #navbar-video .is-fullwidth {
+        flex-direction: column;
+    }
+
+    #navbar-video .button.is-active {
+        border-bottom: 0;
+        border-left: 1px solid white;
+        box-shadow: none !important;
+    }
 }
