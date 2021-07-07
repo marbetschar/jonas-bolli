@@ -310,6 +310,11 @@ h3.subtitle {
     .video-container .subtitle {
         font-size: 1.4em;
     }
+
+    .video-navbar.ios-small {
+        position: relative;
+        bottom: 68pt;
+    }
 }
 
 @media screen and (max-width: 799px) {

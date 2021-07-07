@@ -91,4 +91,13 @@ const init = {
 document.addEventListener('DOMContentLoaded', () => {
   init.navbarBurgers();
   init.videoSlideshow();
+
+  if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+    let navbarElements = document.getElementsByClassName('video-navbar');
+    if (navbarElements.length) {
+      for (let i = 0; i < navbarElements.length; i++) {
+        navbarElements[i].classList.add("ios-small");
+      }
+    }
+  }
 });
