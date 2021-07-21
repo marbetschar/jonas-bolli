@@ -7289,7 +7289,8 @@ a.button.has-text-logo-monochrome:hover {
   border: 0; }
 
 .button.is-primary,
-.button.is-primary:hover {
+.button.is-primary:hover,
+.button.is-primary[disabled] {
   background-color: #4d4d4d;
   color: white; }
 
@@ -7398,6 +7399,12 @@ a.social img {
   width: 1em;
   height: 1em;
   vertical-align: middle; }
+
+.form-success {
+  color: #8FF987; }
+
+.form-error {
+  color: #FF6559; }
 
 html, body {
   font-family: 'Raleway', sans-serif; }

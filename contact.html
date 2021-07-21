@@ -54,35 +54,86 @@
           <h3 class="subtitle has-text-white">
             Gerne beraten wir Sie individuell um ihren Ansprüchen gerecht zu werden.
           </h3>
-          <div class="field is-dark">
-            <label class="label is-pulled-left">Name</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="Name">
-            </div>
-          </div>
 
-          <div class="field is-dark">
-            <label class="label is-pulled-left">E-Mail Adresse</label>
-            <div class="control">
-              <input class="input" type="email" placeholder="E-Mail Adresse" value="">
-            </div>
-          </div>
+          <p id="contact-form-status"></p>
 
-          <div class="field is-dark">
-            <label class="label is-pulled-left">Nachricht</label>
-            <div class="control">
-              <textarea class="textarea" placeholder="Nachricht"></textarea>
+          <form id="contact-form" method="POST">
+            <div class="field is-dark">
+              <label class="label is-pulled-left">Name</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Name" name="Name" />
+              </div>
             </div>
-          </div>
 
-          <div class="field is-grouped is-pulled-right">
-            <div class="control">
-              <button class="button is-primary">Anfrage abschicken</button>
+            <div class="field is-dark">
+              <label class="label is-pulled-left">E-Mail Adresse</label>
+              <div class="control">
+                <input class="input" type="email" placeholder="E-Mail Adresse" name="Email" value="" />
+              </div>
             </div>
-          </div>
+
+            <div class="field is-dark">
+              <label class="label is-pulled-left">Nachricht</label>
+              <div class="control">
+                <textarea class="textarea" placeholder="Nachricht" name="Nachricht"></textarea>
+              </div>
+            </div>
+
+            <div class="field is-grouped is-pulled-right">
+              <div class="control">
+                <button id="contact-form-button" class="button is-primary">Anfrage abschicken</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </section>
     <script type="text/javascript" src="lib/main.js"></script>
+    <script>
+      var form = document.getElementById("contact-form");
+      form.action = "https://formspree.io/f/xdoylbov";
+
+      function formSetDisabled(disabled) {
+        var inputs = form.getElementsByTagName('input');
+        for (var i = 0; i < inputs.length; i++) {
+          inputs[i].disabled = disabled;
+        }
+
+        var textareas = form.getElementsByTagName('textarea');
+        for (var i = 0; i < textareas.length; i++) {
+          textareas[i].disabled = disabled;
+        }
+
+        var buttons = form.getElementsByTagName('button');
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].disabled = disabled;
+        }
+      }
+      
+      async function handleSubmit(event) {
+        event.preventDefault();
+
+        formSetDisabled(true);
+
+        var status = document.getElementById("contact-form-status");
+        var data = new FormData(event.target);
+        fetch(event.target.action, {
+          method: form.method,
+          body: data,
+          headers: {
+              'Accept': 'application/json'
+          }
+        }).then(response => {
+          status.innerHTML = "Vielen Dank für Ihre Anfrage! Wir werden uns in Kürze mit Ihnen in Verbindung setzen.";
+          status.classList.add("form-success");
+          form.reset();
+        }).catch(error => {
+          status.innerHTML = "Oops! Es ist ein Fehler aufgetreten: " + error.message;
+          status.classList.add("form-error");
+          formSetDisabled(false);
+        });
+      }
+      form.addEventListener("submit", handleSubmit)
+  </script>
   </body>
 </html>

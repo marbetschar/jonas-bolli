@@ -45,7 +45,7 @@ const init = {
       let videoHeros = document.getElementsByClassName('video-hero');
 
       let hash = location.hash.replace('#','');
-      if (hash.trim() == "") {
+      if (hash.trim() == "" && videoHeros.length) {
         hash = videoHeros[0].id;
       }
 
