@@ -113,10 +113,10 @@
       async function handleSubmit(event) {
         event.preventDefault();
 
-        formSetDisabled(true);
-
         var status = document.getElementById("contact-form-status");
         var data = new FormData(event.target);
+        formSetDisabled(true);
+
         fetch(event.target.action, {
           method: form.method,
           body: data,
